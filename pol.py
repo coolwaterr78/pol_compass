@@ -49,18 +49,33 @@ references = pd.DataFrame([
 ])
 
 def get_political_label(econ, soc):
+    # --- AUTHORITARIAN TOP ---
     if soc > 3:
-        if econ < -3: return "Authoritarian Left", "#ff4b4b" 
-        if econ > 3: return "Authoritarian Right", "#1c83e1" 
-        return "Authoritarian Center", "#a1a1a1"
+        if econ < -7: return "Totalitarian Left (Stalinism)", "#ff4b4b"
+        elif econ < -3: return "Authoritarian Left (State Socialism)", "#ff4b4b"
+        elif econ > 7: return "Fascism / Ultranationalism", "#1c83e1"
+        elif econ > 3: return "Authoritarian Right (Conservatism)", "#1c83e1"
+        return "Statism / Authoritarian Center", "#a1a1a1"
+
+    # --- LIBERTARIAN BOTTOM ---
     elif soc < -3:
-        if econ < -3: return "Libertarian Left", "#28a745" 
-        if econ > 3: return "Libertarian Right", "#ffd43b" 
+        if econ < -7: return "Anarcho-Communism", "#28a745"
+        elif econ < -3: return "Libertarian Socialism", "#28a745"
+        elif econ > 7: return "Anarcho-Capitalism", "#ffd43b"
+        elif econ > 3: return "Right-Libertarianism", "#ffd43b"
         return "Libertarian Center", "#a1a1a1"
+
+    # --- THE MIDDLE BAND (SOCIAL) ---
     else:
-        if econ < -3: return "Social Democracy", "#ff8c00"
-        if econ > 3: return "Liberalism / Capitalism", "#00ced1"
-        return "Centrist", "#31333F"
+        if econ < -7: return "Orthodox Marxism", "#ff8c00"
+        elif econ < -3: return "Social Democracy", "#ff8c00"
+        elif econ > 7: return "Laissez-Faire Capitalism", "#00ced1"
+        elif econ > 3: return "Neo-Liberalism", "#00ced1"
+        
+        # Dead Center
+        if -1.5 <= econ <= 1.5 and -1.5 <= soc <= 1.5:
+            return "Centrist / Moderate", "#31333F"
+        return "Moderate / Progressivism", "#4b4b4b"
 
 # --- 20 QUESTIONS ---
 econ_qs = [
