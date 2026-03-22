@@ -96,7 +96,7 @@ options = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"
 multiplier = {"Strongly Disagree": -1.0, "Disagree": -0.5, "Neutral": 0, "Agree": 0.5, "Strongly Agree": 1.0}
 
 # --- UI EXECUTION ---
-st.title("🎯 Indian Political Compass")
+st.title("🎯 Political Compass")
 
 # NEW: User Name Input
 user_name = st.text_input("Enter your name for the map:", placeholder="e.g. Rahul, Priya, etc.")
